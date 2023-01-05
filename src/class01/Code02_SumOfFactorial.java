@@ -1,5 +1,6 @@
 package class01;
 
+// 阶乘
 public class Code02_SumOfFactorial {
 
 	public static long f1(int N) {
