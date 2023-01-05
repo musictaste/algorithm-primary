@@ -146,6 +146,18 @@ public class Code02_RandToRand {
 		count = 0;
 		double x = 0.17;
 		for (int i = 0; i < testTimes; i++) {
+			if (xToXPower2_2() < x) {
+				count++;
+			}
+		}
+		System.out.println((double) count / (double) testTimes);
+		System.out.println(Math.pow(x, 2));
+
+		System.out.println("==========");
+
+		count = 0;
+		 x = 0.17;
+		for (int i = 0; i < testTimes; i++) {
 			if (xToXPower2() < x) {
 				count++;
 			}
@@ -153,7 +165,9 @@ public class Code02_RandToRand {
 		System.out.println((double) count / (double) testTimes);
 		System.out.println((double) 1 - Math.pow((double) 1 - x, 2));
 
-		System.out.println("==========");
+
+		// -------------------
+		System.out.println("=====验证f2函数=====");
 		count = 0;
 		for (int i = 0; i < testTimes; i++) {
 			if (f2() == 0) {
@@ -162,7 +176,7 @@ public class Code02_RandToRand {
 		}
 		System.out.println((double) count / (double) testTimes);
 
-		System.out.println("==========");
+		System.out.println("====验证f3函数======");
 
 		counts = new int[8];
 		for (int i = 0; i < testTimes; i++) {
@@ -177,9 +191,18 @@ public class Code02_RandToRand {
 
 	// 返回[0,1)的一个小数
 	// 任意的x，x属于[0,1)，[0,x)范围上的数出现概率由原来的x调整成x平方
+	public static double xToXPower2_2() {
+		return Math.max(Math.random(), Math.random());
+	}
+
+
+	// 返回[0,1)的一个小数
+	// 任意的x，x属于[0,1)，不在[0,x)范围上的数出现概率由原来的x调整成x平方
 	public static double xToXPower2() {
 		return Math.min(Math.random(), Math.random());
 	}
+
+	//-------从1~5随机到1~7随机-------------
 
 	// lib里的，不能改！
 	public static int f1() {
@@ -188,6 +211,7 @@ public class Code02_RandToRand {
 
 	// 随机机制，只能用f1，
 	// 等概率返回0和1
+	// 得到一个0和1随机生成器
 	public static int f2() {
 		int ans = 0;
 		do {
@@ -214,12 +238,21 @@ public class Code02_RandToRand {
 		return f4() + 1;
 	}
 
+	// ---------从1~5随机到1~7随机------------
+
+
+	// --------01不等概率随机到01等概率随机-----------
+
 	// 你只能知道，x会以固定概率返回0和1，但是x的内容，你看不到！
 	public static int x() {
 		return Math.random() < 0.84 ? 0 : 1;
 	}
 
 	// 等概率返回0和1
+	// 0 0 -> 不要
+	// 1 1 -> 不要
+	// 0 1 -> 要
+	// 1 0 -> 要
 	public static int y() {
 		int ans = 0;
 		do {
@@ -227,5 +260,7 @@ public class Code02_RandToRand {
 		} while (ans == x());
 		return ans;
 	}
+
+	// --------01不等概率随机到01等概率随机-----------
 
 }
