@@ -1,7 +1,8 @@
 package class03;
 
+// 局部最小值问题
 public class Code04_BSAwesome {
-
+	// arr 整体无序
 	// arr 相邻的数不相等！
 	public static int oneMinIndex(int[] arr) {
 		if (arr == null || arr.length == 0) {

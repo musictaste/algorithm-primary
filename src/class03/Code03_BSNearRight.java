@@ -2,6 +2,7 @@ package class03;
 
 import java.util.Arrays;
 
+// 有序数组中找到<=num最右的位置
 public class Code03_BSNearRight {
 
 	// 在arr上，找满足<=value的最右位置
