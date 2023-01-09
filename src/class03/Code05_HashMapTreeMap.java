@@ -43,6 +43,8 @@ public class Code05_HashMapTreeMap {
 		System.out.println(map2.containsKey(a));
 		System.out.println(map2.containsKey(b));
 
+		// 哈希表中Integer等基础类型的封装类，是按值传递，内存占用情况是Integer的大小(key)+Integer的大小(value)
+
 		Node node1 = new Node(1);
 		Node node2 = new Node(1);
 		HashMap<Node, String> map3 = new HashMap<>();
@@ -50,8 +52,10 @@ public class Code05_HashMapTreeMap {
 		System.out.println(map3.containsKey(node1));
 		System.out.println(map3.containsKey(node2));
 
-		System.out.println("===================");
+		// 这种情况，哈希表是按引用地址传递，哈希表的内存占用情况是Node节点的内存地址，也就是8字节(key)+8字节(value)=16字节
 
+		System.out.println("===================");
+		// TreeMap是有序表，时间复杂度是O(logN);哈希表的时间复杂度是O(1),但是有序表比哈希表的虽然时间复杂度大一些，功能更丰富
 		TreeMap<Integer, String> treeMap1 = new TreeMap<>();
 
 		treeMap1.put(3, "我是3");
@@ -82,6 +86,7 @@ public class Code05_HashMapTreeMap {
 		// >=6 离6最近的key告诉我
 		System.out.println(treeMap1.ceilingKey(6));
 
+		// 有序表的引用传递，下述代码会报错，因为需要将key转换为可以比较的，所以需要重写Node的equals的方法
 //		Node node3 = new Node(3);
 //		Node node4 = new Node(4);
 //		TreeMap<Node, String> treeMap2 = new TreeMap<>();
