@@ -2,6 +2,7 @@
 
 package class04;
 
+// K个节点的组内逆序调整
 // 测试链接：https://leetcode.com/problems/reverse-nodes-in-k-group/
 public class Code04_ReverseNodesInKGroup {
 
@@ -35,6 +36,8 @@ public class Code04_ReverseNodesInKGroup {
 		return head;
 	}
 
+	// 从指定节点开始，返回K个节点以后的那个节点
+	// 不够K个返回null
 	public static ListNode getKGroupEnd(ListNode start, int k) {
 		while (--k != 0 && start != null) {
 			start = start.next;
