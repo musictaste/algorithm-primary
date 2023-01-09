@@ -3,6 +3,8 @@ package class04;
 import java.util.Deque;
 import java.util.LinkedList;
 
+// 用双链表结构实现双端队列
+// 能用单链表实现双端队列吗？头部可以加减、尾部可以加但是不能减
 public class Code03_DoubleLinkedListToDeque {
 
 	public static class Node<V> {
@@ -74,7 +76,7 @@ public class Code03_DoubleLinkedListToDeque {
 				tail = null;
 			} else {
 				head = head.next;
-				head.last = null;
+				head.last = null; // 新的头部一定要指向null，否则内存泄漏
 			}
 			return ans;
 		}

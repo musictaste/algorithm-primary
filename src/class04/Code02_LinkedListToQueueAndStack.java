@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Stack;
 
+// 用单链表结构实现队列和栈
 public class Code02_LinkedListToQueueAndStack {
 
 	public static class Node<V> {
