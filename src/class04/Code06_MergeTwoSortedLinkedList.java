@@ -1,5 +1,6 @@
 package class04;
 
+// 两个有序链表的合并
 // 测试链接：https://leetcode.com/problems/merge-two-sorted-lists
 public class Code06_MergeTwoSortedLinkedList {
 
@@ -13,7 +14,7 @@ public class Code06_MergeTwoSortedLinkedList {
 		if (head1 == null || head2 == null) {
 			return head1 == null ? head2 : head1;
 		}
-		ListNode head = head1.val <= head2.val ? head1 : head2;
+		ListNode head = head1.val <= head2.val ? head1 : head2; // 决定将来返回谁是新链表的头部
 		ListNode cur1 = head.next;
 		ListNode cur2 = head == head1 ? head2 : head1;
 		ListNode pre = head;

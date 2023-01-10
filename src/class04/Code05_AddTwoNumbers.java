@@ -1,5 +1,6 @@
 package class04;
 
+// 两个链表相加
 // 测试链接：https://leetcode.com/problems/add-two-numbers/
 public class Code05_AddTwoNumbers {
 
@@ -25,9 +26,10 @@ public class Code05_AddTwoNumbers {
 		ListNode s = l == head1 ? head2 : head1;
 		ListNode curL = l;
 		ListNode curS = s;
-		ListNode last = curL;
-		int carry = 0;
+		ListNode last = curL; // 用于长短链表都没有的时候，又有进位信息的时候补节点时，找到长链表的最后一个节点
+		int carry = 0; // 进位信息
 		int curNum = 0;
+		// 长、短链表都有
 		while (curS != null) {
 			curNum = curL.val + curS.val + carry;
 			curL.val = (curNum % 10);
@@ -36,6 +38,7 @@ public class Code05_AddTwoNumbers {
 			curL = curL.next;
 			curS = curS.next;
 		}
+		// 长链表有、短链表没有
 		while (curL != null) {
 			curNum = curL.val + carry;
 			curL.val = (curNum % 10);
@@ -43,6 +46,7 @@ public class Code05_AddTwoNumbers {
 			last = curL;
 			curL = curL.next;
 		}
+		// 长短链表都没有
 		if (carry != 0) {
 			last.next = new ListNode(1);
 		}
