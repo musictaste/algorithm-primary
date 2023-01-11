@@ -9,14 +9,20 @@ public class Code02_BitMap2 {
 
 		private long[] bits;
 
+		// (max+64) >> 6  = (max+64)/64    标识0，需要1个long类型
+		// 向上取余=(a+b-1)/b
 		public BitMap(int max) {
 			bits = new long[(max + 64) >> 6];
 		}
 
+		// (num/64) = 属于哪个整数
+		// (num & 63) = 整数的哪位 = num % 64
+		// bits[num >> 6] |= (1 << (num & 63) = 将num所在的位置标为1
 		public void add(int num) {
 			bits[num >> 6] |= (1L << (num & 63));
 		}
 
+		// (1 << (num & 63) + 取反 + 与运算
 		public void delete(int num) {
 			bits[num >> 6] &= ~(1L << (num & 63));
 		}
