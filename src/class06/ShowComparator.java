@@ -33,6 +33,7 @@ public class ShowComparator {
 			} else {
 				return 0;
 			}
+//			return o1.val - o2.val; 更优
 		}
 	}
 	
@@ -51,6 +52,8 @@ public class ShowComparator {
 			} else {
 				return 0;
 			}
+
+//			return o1.val - o2.val; 更优
 		}
 	}
 

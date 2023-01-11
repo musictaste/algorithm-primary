@@ -1,5 +1,6 @@
 package class06;
 
+// 遍历二叉树
 public class TraversalBinaryTree {
 
 	public static class Node {

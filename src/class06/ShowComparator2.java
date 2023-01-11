@@ -50,13 +50,21 @@ public class ShowComparator2 {
 			} else {
 				return 0;
 			}
+//			return o1.val - o2.val; 更优
 		}
 	}
 
 	public static void main(String[] args) {
+//		String是怎么比较的？ ==是字典序==
+//		- 长度相同，按照aciic码的值比较
+//		- 长度不同，用最大的aciic码补齐长度，然后比较
 		String str1 = "abc";
 		String str2 = "b";
 		System.out.println(str1.compareTo(str2));
+
+
+//		利用PriorityQueue实现大顶堆=实现比较器
+//		- TreeMap和TreeSet都是带排序的类
 		PriorityQueue<Student> heap = new PriorityQueue<>(new IdComparator());
 		Student s1 = new Student("张三", 5, 27);
 		Student s2 = new Student("李四", 1, 17);
