@@ -3,6 +3,7 @@ package class07;
 import java.util.ArrayList;
 import java.util.List;
 
+// 收集达标路径和
 public class Code04_PathSumII {
 
 	// 测试链接：https://leetcode.com/problems/path-sum-ii
@@ -26,12 +27,13 @@ public class Code04_PathSumII {
 		return ans;
 	}
 
+	// 参数的含义：当前节点、该路径上已经处理过的节点、当前路径的累加和、预期的累加和、符合累加和的路径集合
 	public static void process(TreeNode x, List<Integer> path, int preSum, int sum, List<List<Integer>> ans) {
-		if (x.left == null && x.right == null) {
+		if (x.left == null && x.right == null) { // 如果是叶子节点判断累加和是否符合预期
 			if (preSum + x.val == sum) {
-				path.add(x.val);
+				path.add(x.val); // 添加当前节点到当前路径中
 				ans.add(copy(path));
-				path.remove(path.size() - 1);
+				path.remove(path.size() - 1); // 恢复现场，因为前面path添加了当前节点；但尝试别的路径的时候要把当前节点去掉
 			}
 			return;
 		}
@@ -44,7 +46,7 @@ public class Code04_PathSumII {
 		if (x.right != null) {
 			process(x.right, path, preSum, sum, ans);
 		}
-		path.remove(path.size() - 1);
+		path.remove(path.size() - 1); // 恢复现场
 	}
 
 	public static List<Integer> copy(List<Integer> path) {

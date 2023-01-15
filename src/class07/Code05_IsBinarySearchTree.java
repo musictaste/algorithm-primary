@@ -1,5 +1,6 @@
 package class07;
-
+// 判断是否是搜索二叉树
+// 定义：任何一个节点，左树节点比我小；右树节点比我大
 public class Code05_IsBinarySearchTree {
 
 	public static class TreeNode {
@@ -47,6 +48,7 @@ public class Code05_IsBinarySearchTree {
 //		if (rightInfo != null && !rightInfo.isBST) {
 //			isBST = false;
 //		}
+//	 	// left max < x  and right min > x
 //		boolean leftMaxLessX = leftInfo == null ? true : (leftInfo.max < x.val);
 //		boolean rightMinMoreX = rightInfo == null ? true : (rightInfo.min > x.val);
 //		if (!(leftMaxLessX && rightMinMoreX)) {

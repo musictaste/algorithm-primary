@@ -1,5 +1,7 @@
 package class07;
 
+// 能否组成路径和
+// 路径：必须头节点开始，叶节点结束
 public class Code03_PathSum {
 
 	// 测试链接：https://leetcode.com/problems/path-sum
@@ -25,7 +27,7 @@ public class Code03_PathSum {
 	}
 
 	public static void process(TreeNode x, int preSum, int sum) {
-		if (x.left == null && x.right == null) {
+		if (x.left == null && x.right == null) { // 定义是叶子节点
 			if (x.val + preSum == sum) {
 				isSum = true;
 			}
