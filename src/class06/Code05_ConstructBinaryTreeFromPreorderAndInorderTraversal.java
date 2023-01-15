@@ -2,6 +2,7 @@ package class06;
 
 import java.util.HashMap;
 
+// leetcode105:用先序数组和中序数组重建一棵树
 //测试链接：https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal
 public class Code05_ConstructBinaryTreeFromPreorderAndInorderTraversal {
 
@@ -25,7 +26,7 @@ public class Code05_ConstructBinaryTreeFromPreorderAndInorderTraversal {
 	// 有一棵树，先序结果是pre[L1...R1]，中序结果是in[L2...R2]
 	// 请建出整棵树返回头节点
 	public static TreeNode f(int[] pre, int L1, int R1, int[] in, int L2, int R2) {
-		if (L1 > R1) {
+		if (L1 > R1) { // 解决左树为空或右树为空的情况，导致下面的下标越界
 			return null;
 		}
 		TreeNode head = new TreeNode(pre[L1]);
@@ -33,14 +34,16 @@ public class Code05_ConstructBinaryTreeFromPreorderAndInorderTraversal {
 			return head;
 		}
 		int find = L2;
-		while (in[find] != pre[L1]) {
+		while (in[find] != pre[L1]) { // 找到中序数组的头
 			find++;
 		}
-		head.left = f(pre, L1 + 1, L1 + find - L2, in, L2, find - 1);
+		head.left = f(pre, L1 + 1, L1 + find - L2, in, L2, find - 1); // 左树的范围：L1 + 1, L1 + find - L2
 		head.right = f(pre, L1 + find - L2 + 1, R1, in, find + 1, R2);
 		return head;
 	}
 
+	// 利用哈希表解决中序数组每次需要遍历的缺点，空间换时间
+	// 时间复杂度：O(N),因为g方法每个节点都要遍历，其他的代码都是O(1)的复杂度，所以时间复杂度为O(N)
 	public static TreeNode buildTree2(int[] pre, int[] in) {
 		if (pre == null || in == null || pre.length != in.length) {
 			return null;

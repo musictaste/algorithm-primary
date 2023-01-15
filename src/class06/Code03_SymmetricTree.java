@@ -1,5 +1,6 @@
 package class06;
 
+// 判断一棵树是否是镜面树
 // 测试链接：https://leetcode.com/problems/symmetric-tree
 public class Code03_SymmetricTree {
 
