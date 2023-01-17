@@ -1,5 +1,4 @@
 package class06;
-
 // 遍历二叉树
 public class TraversalBinaryTree {
 
@@ -13,15 +12,16 @@ public class TraversalBinaryTree {
 		}
 	}
 
+	// 递归序
 	public static void f(Node head) {
 		if (head == null) {
 			return;
 		}
-		// 1
+		// 1 先序
 		f(head.left);
-		// 2
+		// 2 中序
 		f(head.right);
-		// 3
+		// 3 后续
 	}
 
 	// 先序打印所有节点
