@@ -1,5 +1,6 @@
 package class08;
 
+// 归并排序
 // 可以去体系学习班学习
 public class Code02_MergeSort {
 
@@ -44,17 +45,19 @@ public class Code02_MergeSort {
 		}
 	}
 
+
+	// 非递归实现-时间复杂度：O(logN*N)
 	public static void mergeSort2(int[] arr) {
 		if (arr == null || arr.length < 2) {
 			return;
 		}
-		int step = 1;
+		int step = 1;  // 步长默认为1，依次为2、4、8
 		int N = arr.length;
 		while (step < N) {
 			int L = 0;
 			while (L < N) {
 				int M = 0;
-				if (N - L >= step) {
+				if (N - L >= step) { // (N-1)-L+1 = N-L,为了防止越界
 					M = L + step - 1;
 				} else {
 					M = N - 1;
@@ -62,20 +65,22 @@ public class Code02_MergeSort {
 				if (M == N - 1) {
 					break;
 				}
+
+				// L..M M+1..R
 				int R = 0;
-				if (N - 1 - M >= step) {
+				if (N - 1 - M >= step) { // 为了防止越界， (N-1)-(M+1)+1
 					R = M + step;
 				} else {
 					R = N - 1;
 				}
 				merge(arr, L, M, R);
-				if (R == N - 1) {
+				if (R == N - 1) { // 为了防止越界
 					break;
 				} else {
 					L = R + 1;
 				}
 			}
-			if (step > N / 2) {
+			if (step > N / 2) { // 防止越界：防止步长*2，超过int的最大值，注意N/2是向下取整，所以不能step >= N/2
 				break;
 			}
 			step *= 2;
@@ -83,7 +88,7 @@ public class Code02_MergeSort {
 
 	}
 
-	// 非递归方法实现
+	// 非递归方法实现-精简版
 //	public static void mergeSort2(int[] arr) {
 //		if (arr == null || arr.length < 2) {
 //			return;
