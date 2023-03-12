@@ -29,7 +29,8 @@ public class Code01_MergeKSortedLists {
 		if (lists == null) {
 			return null;
 		}
-		PriorityQueue<ListNode> heap = new PriorityQueue<>(new ListNodeComparator());
+//		PriorityQueue<ListNode> heap = new PriorityQueue<>(new ListNodeComparator());
+		PriorityQueue<ListNode> heap = new PriorityQueue<>((o1,o2) -> o1.val - o2.val);
 		for (int i = 0; i < lists.length; i++) {
 			if (lists[i] != null) {
 				heap.add(lists[i]);
@@ -38,6 +39,7 @@ public class Code01_MergeKSortedLists {
 		if (heap.isEmpty()) {
 			return null;
 		}
+		// 记录将来的链表头结点
 		ListNode head = heap.poll();
 		ListNode pre = head;
 		if (pre.next != null) {

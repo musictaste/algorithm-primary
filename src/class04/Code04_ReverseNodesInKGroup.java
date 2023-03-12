@@ -45,7 +45,9 @@ public class Code04_ReverseNodesInKGroup {
 		return start;
 	}
 
+	// 指定范围内链表反转
 	public static void reverse(ListNode start, ListNode end) {
+		// 用于链表反转后继续关联链表，使得链表不断连；另外记录到哪个位置，结束链表反转
 		end = end.next;
 		ListNode pre = null;
 		ListNode cur = start;

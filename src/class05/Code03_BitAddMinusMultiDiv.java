@@ -44,7 +44,7 @@ public class Code03_BitAddMinusMultiDiv {
 		return n < 0;
 	}
 
-	// 除法
+	// 除法，支持向下取整
 	public static int div(int a, int b) {
 		int x = isNeg(a) ? negNum(a) : a;
 		int y = isNeg(b) ? negNum(b) : b;
@@ -62,14 +62,23 @@ public class Code03_BitAddMinusMultiDiv {
 
 	public static int divide(int a, int b) {
 		// 系统最小值，无法转成绝对值，它的绝对值还是它自己
+		// a和b都是系统最小
 		if (a == Integer.MIN_VALUE && b == Integer.MIN_VALUE) {
 			return 1;
 		} else if (b == Integer.MIN_VALUE) {
+			// b是系统最小，a不是系统最小
 			return 0;
 		} else if (a == Integer.MIN_VALUE) {
+			// a是系统最小，b不是系统最小
 			if (b == negNum(1)) { // 规定：系统最小 / -1 = 系统最大
 				return Integer.MAX_VALUE;
 			} else {
+				// a/b
+				// (a+1)/b=c
+				// a-(b*c)=d
+				// d/b = e
+				// ans = c+e
+				//----
 				// 系统最小a 得到系统最大的相反数 c
 				// c除b=d
 				// a-b*d=e
@@ -83,4 +92,8 @@ public class Code03_BitAddMinusMultiDiv {
 		}
 	}
 
+	public static void main(String[] args) {
+		int divide = divide(-9, 4);
+		System.out.println(divide);
+	}
 }
